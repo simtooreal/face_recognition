@@ -41,10 +41,15 @@ RUN cd ~ && \
 #     pip3 install -r requirements.txt
 # RUN whatever_command_you_run_to_start_your_app
 
+RUN pwd
+RUN ls -al
+
+EXPOSE 5001
+
 COPY . /root/face_recognition
 RUN cd /root/face_recognition && \
     pip3 install -r requirements.txt && \
     python3 setup.py install
 
 CMD cd /root/face_recognition/examples && \
-    python3 recognize_faces_in_pictures.py
+    python3 web_service_example.py
